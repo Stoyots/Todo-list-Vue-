@@ -359,6 +359,7 @@ export default {
 .task-manager input[type="text"] {
   width: 40%;
   padding: 10px;
+  margin-bottom: 20px;
   font-size: 1rem;
   border-radius: 8px;
   border: 1px solid #ddd;
