@@ -1,10 +1,10 @@
 <template>
   <div id="app">
-    <!-- Barre latérale -->
+    <!-- Sidebar -->
     <div class="sidebar" :class="{ collapsed: isSidebarCollapsed }">
       <div class="sidebar-header">
-        <h2 v-if="!isSidebarCollapsed">Mes listes</h2>
-        <!-- Bouton de repli-dépli juste à côté du titre -->
+        <h2 v-if="!isSidebarCollapsed">My Lists</h2>
+        <!-- Toggle button next to the title -->
         <button @click="toggleSidebar" class="toggle-sidebar-button">
           {{ isSidebarCollapsed ? '>' : '<' }}
         </button>
@@ -22,10 +22,10 @@
           {{ list.name }}
         </li>
       </ul>
-      <button v-if="!isSidebarCollapsed" @click="addNewList" class="add-list-button">+ Ajouter Liste</button>
+      <button v-if="!isSidebarCollapsed" @click="addNewList" class="add-list-button">+ Add List</button>
     </div>
 
-    <!-- Zone principale -->
+    <!-- Main area -->
     <div class="main" :style="{ backgroundColor: currentList.color }">
       <div class="list-header">
         <template v-if="isEditingListName">
@@ -41,7 +41,7 @@
           <h1 @click="startEditingListName">{{ currentList.name }}</h1>
         </template>
         
-        <!-- Sélecteur de couleur personnalisé -->
+        <!-- Custom color picker -->
         <div class="color-picker">
           <button
             v-for="(hex, name) in colorNames"
@@ -50,7 +50,7 @@
             class="color-option"
             @click="selectColor(hex)"
           >
-            <!-- Petit carré coloré comme aperçu -->
+            <!-- Small colored square as preview -->
           </button>
         </div>
       </div>
@@ -60,10 +60,10 @@
           type="text" 
           v-model="newTask" 
           @keyup.enter="addTask" 
-          placeholder="Ajouter une tâche..."
+          placeholder="Add a task..."
         />
         
-        <!-- Tâches en cours -->
+        <!-- Active tasks -->
         <ul>
           <li 
             v-for="(task, index) in activeTasks" 
@@ -75,14 +75,14 @@
               @change="saveLists"
             />
             <span>{{ task.name }}</span>
-            <button @click="deleteTask(index)">Supprimer</button>
+            <button @click="deleteTask(index)">Delete</button>
           </li>
         </ul>
 
-        <!-- Séparateur -->
+        <!-- Separator -->
         <hr />
 
-        <!-- Tâches terminées -->
+        <!-- Completed tasks -->
         <ul>
           <li 
             v-for="(task, index) in completedTasks" 
@@ -94,18 +94,19 @@
               @change="saveLists"
             />
             <span class="completed">{{ task.name }}</span>
-            <button @click="deleteTask(index)">Supprimer</button>
+            <button @click="deleteTask(index)">Delete</button>
           </li>
         </ul>
 
-        <!-- Bouton de suppression de liste -->
+        <!-- Delete list button -->
         <button @click="deleteList(currentListIndex)" class="delete-list-button">
-          Supprimer la Liste
+          Delete List
         </button>
       </div>
     </div>
   </div>
 </template>
+
 
 <script>
 export default {
@@ -146,7 +147,7 @@ export default {
     addNewList() {
       const colorsArray = Object.values(this.colorNames);
       const newList = {
-        name: `Nouvelle liste ${this.lists.length + 1}`,
+        name: `New List ${this.lists.length + 1}`,
         tasks: [],
         color: colorsArray[Math.floor(Math.random() * colorsArray.length)],
       };
@@ -182,7 +183,7 @@ export default {
     deleteList(index) {
       if (this.lists.length === 1) {
         // Si c'est la dernière liste, on en crée une nouvelle vide
-        this.lists.splice(0, 1, { name: "Nouvelle liste", tasks: [], color: "#FFB6C1" });
+        this.lists.splice(0, 1, { name: "New List", tasks: [], color: "#FFB6C1" });
       } else {
         if (confirm("Êtes-vous sûr de vouloir supprimer cette liste ?")) {
           this.lists.splice(index, 1);
@@ -218,7 +219,7 @@ export default {
 
 .sidebar {
   width: 170px;
-  background-color: #fff;
+  background-color: #949494a8;
   padding: 20px;
   border-right: 1px solid #e1e1e1;
   box-shadow: 4px 0 10px rgba(0, 0, 0, 0.1);
@@ -307,8 +308,15 @@ export default {
   border-radius: 8px;
   background-color: #ffffff;
   margin: 10vh;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.425);
   position: relative;
+  transition: 0.3s;
+}
+
+.main:hover{
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+  scale: 1.07;
+  transition: 0.3s;
 }
 
 .list-header {
@@ -373,9 +381,9 @@ export default {
 .task-manager li {
   display: flex;
   align-items: center;
-  background-color: #f9f9f9;
+  background-color: #f9f9f952;
   margin-bottom: 12px;
-  padding: 10px;
+  padding: 3px;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
   transition: transform 0.3s, background-color 0.3s;
