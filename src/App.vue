@@ -112,14 +112,15 @@ export default {
   data() {
     return {
       colorNames: {
-        "Rose Clair": "#FFB6C1",
-        "Bleu Pâle": "#B0E0E6",
-        "Vert Clair": "#98FB98",
-        "Jaune Doré": "#FFD700",
-        "Tomate": "#FF6347",
-        "Lavande": "#D8BFD8",
-        "Jaune Pâle": "#F0E68C",
-        "Bleu Turquoise": "#AFEEEE",
+        "Rose Clair": "#FAD0C9",      // Rose pastel doux
+        "Jaune Doré": "#F9E79F",      // Jaune pastel
+        "Bleu Nuit": "#A3BFD9",       // Bleu pastel clair
+        "Vert Clair": "#A8E6CF",      // Vert pastel doux
+        "Tomate": "#FAD0B1",          // Rouge pastel doux
+        "Lavande": "#D7B6D4",         // Lavande pastel clair
+        "Jaune Pâle": "#F4E1A1",      // Jaune pâle doux
+        "Bleu Turquoise": "#B2D8D8",  // Bleu turquoise pastel
+        "Vert Forêt": "#C8E6C9", 
       },
       lists: JSON.parse(localStorage.getItem("lists")) || [
         { name: "Ma première liste", tasks: [], color: "#FFB6C1" },
@@ -252,7 +253,7 @@ export default {
   margin-bottom: 10px;
   cursor: pointer;
   font-size: 1.2rem;
-  border-radius: 5px;
+  border-radius: 7px;
   transition: background-color 0.3s, transform 0.2s;
 }
 
@@ -265,6 +266,7 @@ export default {
   background-color: #4CAF50;
   color: white;
   font-weight: bold;
+  transform: translateX(10px);
 }
 
 .sidebar .add-list-button {
@@ -347,18 +349,18 @@ export default {
 }
 
 .task-manager input[type="text"] {
-  width: 100%;
-  padding: 12px;
+  width: 40%;
+  padding: 10px;
   font-size: 1rem;
   border-radius: 8px;
   border: 1px solid #ddd;
-  margin-bottom: 20px;
-  transition: border-color 0.3s;
+  margin-bottom: 13px;
+  transition: border-color 0.7s;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
 }
 
 .task-manager input[type="text"]:focus {
-  border-color: #4CAF50;
+  border-color: #242424;
   outline: none;
 }
 
