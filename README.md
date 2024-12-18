@@ -1,3 +1,4 @@
+![Capture d'écran 2024-12-18 185746](https://github.com/user-attachments/assets/250ad135-4561-4062-8620-09c9e68eee65)
 # 📋 **To-Do List Application**
 
 ### _An exercise to familiarize with Vue.js_
