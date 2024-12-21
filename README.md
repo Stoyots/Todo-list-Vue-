@@ -1,6 +1,8 @@
+![Capture d'écran 2024-12-18 190040](https://github.com/user-attachments/assets/16924d8e-b230-4410-9ffe-c2b083d33e6e)
 # 📋 **To-Do List Application**
 
 ### _An exercise to familiarize with Vue.js_
+
 
 This project is a **To-Do List** application built using **Vue.js**. It allows users to create and manage multiple lists, add tasks, and check off completed tasks.
 
